@@ -1,6 +1,7 @@
 import React from 'react';
+import Link from 'next/link'
 
-const index = ({users}) => {
+const index = ({ users }) => {
     /**
      * for data load in React
      * 1. state to hold the data
@@ -11,6 +12,15 @@ const index = ({users}) => {
     return (
         <div>
             <h2>This is Users Main page: {users.length}</h2>
+            {
+                users.map(user => <div key={user.id}>
+                    <h4>Name: {user.name}
+                        <Link href={`/users/${user.id}`}>
+                            <button>Explore</button>
+                        </Link>
+                    </h4>
+                </div>)
+            }
         </div>
     );
 };
